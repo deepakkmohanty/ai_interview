@@ -1,7 +1,9 @@
 {
   "compilerOptions": {
+    "baseUrl": "./", // Specifies the base directory for resolving non-relative module imports
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["src/*"] // Maps '@/' to the 'src/' folder for cleaner imports
     }
-  }
+  },
+  "include": ["src"] // Includes the 'src/' folder in the project scope
 }
