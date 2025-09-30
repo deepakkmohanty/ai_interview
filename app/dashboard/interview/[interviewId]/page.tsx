@@ -7,8 +7,11 @@ import { MockInterview } from "@/utils/schema";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import Webcam from "react-webcam";
+interface InterviewParams {
+  interviewId: string;
+}
 
-function Interview({ params }) {
+function Interview({ params }: { params: InterviewParams }) {
   const [interviewData, setInterviewData] = useState([]);
   const [webCamEnabled, setWebCamEnabled] = useState(false);
   useEffect(() => {
@@ -20,9 +23,10 @@ function Interview({ params }) {
       .select()
       .from(MockInterview)
       .where(eq(MockInterview.mockId, params.interviewId));
-    console.log(result);
-    console.log(interviewData);
-    setInterviewData(result[0]);
+
+    if (result.length > 0) {
+      setInterviewData(result[0]);
+    }
   };
   return (
     <div className="my-10">
